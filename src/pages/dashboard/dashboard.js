@@ -25,9 +25,9 @@ export const Dashboard = () => {
                         <div>Pending tickets: 5</div>
                     </Col>
                 </Row>
-                <Row>
-                    <Col className="mt-2">
-                        Recently Added Tickets
+                <Row className="mb-1">
+                    <Col className="mt-3">
+                        <h4>Recently added Tickets:</h4>
                     </Col>
                 </Row>
                 <Row>
