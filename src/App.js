@@ -3,12 +3,13 @@ import './App.css';
 
 import { Entry } from './pages/entry/Entry';
 import { DefaultLayout } from './layout/DefaultLayout'
+import { Dashboard } from './pages/dashboard/dashboard'
 
 function App() {
   return (
     <div >
       {/* <Entry /> */}
-      <DefaultLayout/>
+      <DefaultLayout><Dashboard/></DefaultLayout>
     </div>
   );
 }
