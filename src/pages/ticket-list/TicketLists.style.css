@@ -1,0 +1,12 @@
+.col-div{
+    text-align: right;
+}
+@media (max-width:576px){
+    .col-div{
+        text-align: left;
+        
+    }
+    .add-new-ticket{
+        margin-top: 2.2rem;
+    }
+}
