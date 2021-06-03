@@ -6,6 +6,9 @@ import { SearchForm } from '../../components/search-form/SearchForm.comp'
 import { TicketTable } from '../../components/ticket-table/TicketTable.comp'
 import  DummyTicket  from '../../assets/data/dummy-ticket.json'
 import './TicketLists.style.css'
+import {
+    Link
+  } from "react-router-dom";
 
 export const TicketLists = () => {
     const [str, setstr] = useState("");
@@ -35,7 +38,7 @@ export const TicketLists = () => {
             </Row>
             <Row className="mt-5">
                 <Col>
-                    <Button className="add-new-ticket" variant="info">Add New Ticket</Button>
+                <Link to='/add-ticket'><Button className="add-new-ticket text-white" variant="info">Add New Ticket</Button></Link> 
                 </Col>
                 <Col >
                     <div className="col-div">

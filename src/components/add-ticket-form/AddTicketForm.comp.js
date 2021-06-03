@@ -30,7 +30,7 @@ export const AddTicketForm = ({ handleOnSubmit, handleOnChange, formData }) => {
                     <Form.Control as="textarea" rows="5" name="details" value={formData.details} onChange={handleOnChange} placeholder="Enter Details here" required />
                 </Form.Group>
                 <div className="btn-div">
-                    <Button type="submit" className=" mt-4 btn-prop" variant="info" size="lg" block > Submit </Button>
+                    <Button type="submit" className=" mt-4 btn-prop text-white" variant="info" size="lg" block > Submit </Button>
                 </div>
 
 

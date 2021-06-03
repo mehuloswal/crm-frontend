@@ -7,17 +7,17 @@
     "history": [
       {
         "date": "20-10-10",
-        "message": "sjflsjl",
+        "message": "message 1",
         "messageBy": "client"
       },
       {
         "date": "20-10-10",
-        "message": "sjflsjl",
+        "message": "message 2",
         "messageBy": "operator"
       },
       {
         "date": "20-10-10",
-        "message": "sjflsjl",
+        "message": "message 3",
         "messageBy": "client"
       }
     ]
