@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { loginPending, loginFail, loginSuccess } from "./LoginSlice";
+import { getUserProfile } from "../../pages/dashboard/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { userLogin } from "../../api/userApi";
@@ -49,6 +50,7 @@ export const LoginForm = ({ formSwitcher }) => {
         return dispatch(loginFail(isAuth.message));
       }
       dispatch(loginSuccess());
+      dispatch(getUserProfile());
       history.push("/dashboard");
     } catch (error) {
       dispatch(loginFail(error.message));
