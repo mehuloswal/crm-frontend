@@ -33,7 +33,7 @@ export const TicketTable = () => {
                 </Link>
               </td>
               <td>{row.status}</td>
-              <td>{row.openedAt}</td>
+              <td>{row.openedAt && new Date(row.openedAt).toLocaleString()}</td>
             </tr>
           ))
         ) : (

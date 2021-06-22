@@ -1,72 +1,84 @@
-
-import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb.comp';
-import dummyTickets from '../../assets/data/dummy-ticket.json'
-import './Ticket.style.css'
-import { MessageHistory } from '../../components/message-history/MessageHistory.comp';
-import { UpdateTicket } from '../../components/update-ticket/UpdateTicket.comp';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
+import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb.comp";
+import "./Ticket.style.css";
+import { MessageHistory } from "../../components/message-history/MessageHistory.comp";
+import { UpdateTicket } from "../../components/update-ticket/UpdateTicket.comp";
 import { useParams } from "react-router-dom";
-
-// const ticket = dummyTickets[0];
+import { fetchSingleTicket, closeTicket } from "../ticket-list/ticketsAction";
 
 export const Ticket = () => {
-    const {tId} = useParams()
-    const [msg, setMsg] = useState("")
-    const [ticket, setTicket] = useState("")
- 
-    useEffect(() => {
-        for (let i = 0; i < dummyTickets.length; i++) {
-           if(dummyTickets[i].id== tId){
-               setTicket(dummyTickets[i])
-               break
-           }
-            
-        }
+  const { isLoading, error, selectedTicket, replyTicketError, replyMsg } =
+    useSelector((state) => state.tickets);
+  const { tId } = useParams();
+  const dispatch = useDispatch();
 
-    }, [msg])
-    const handleOnChange = (e) => {
-        setMsg(e.target.value)
-    }
-    const handleOnSubmit=()=>{
+  useEffect(() => {
+    dispatch(fetchSingleTicket(tId));
+  }, [tId, dispatch]);
 
-    }
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <BreadCrumb pageName="Ticket" />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {isLoading && <Spinner variant="primary" animation="border" />}
+          {error && <Alert variant="danger">{error}</Alert>}
+          {replyTicketError && (
+            <Alert variant="danger">{replyTicketError}</Alert>
+          )}
+          {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
+        </Col>
+      </Row>
 
-    return (
-        <Container >
-            <Row>
-                <Col>
-                    <BreadCrumb pageName="Ticket" />
-                </Col>
-            </Row>
-    
-            <Row className="mt-4">
-                <Col className="text-weight-bolder text-secondary">
-                    <div className="subject" > <b>Subject :</b>  {ticket.subject}</div>
-                    <div className="date"><b>Ticket Open :</b> {ticket.addedAt}</div>
-                    <div className="status"><b>Status :</b> {ticket.status}</div>
-                </Col>
-                <Col className="align-col">
-                    <div className="col-div">
-                        <Button variant="outline-info" className="ps-5 pe-5">Close Ticket</Button>
-                    </div>
-
-                </Col>
-            </Row>
-            <Row className="mt-4">
-                <Col>
-                {ticket.history && <MessageHistory msg={ticket.history}/>}
-                
-                </Col>
-            </Row>
-            <hr className="mt-5" />
-            <Row className="mt-4">
-                <Col>
-                <UpdateTicket msg={msg} handleOnChange={handleOnChange} handleOnSubmit={handleOnSubmit}/>
-                </Col>
-            </Row>
-            
-            
-        </Container>
-    )
-}
+      <Row className="mt-4">
+        <Col className="text-weight-bolder text-secondary">
+          <div className="subject">
+            {" "}
+            <b>Subject :</b> {selectedTicket.subject}
+          </div>
+          <div className="date">
+            <b>Ticket Open :</b>{" "}
+            {selectedTicket.openedAt &&
+              new Date(selectedTicket.openedAt).toLocaleString()}
+          </div>
+          <div className="status">
+            <b>Status :</b> {selectedTicket.status}
+          </div>
+        </Col>
+        <Col className="align-col">
+          <div className="col-div">
+            <Button
+              variant="outline-info"
+              className="ps-5 pe-5"
+              onClick={() => {
+                dispatch(closeTicket(tId));
+              }}
+              disabled={selectedTicket.status === "Closed"}
+            >
+              Close Ticket
+            </Button>
+          </div>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col>
+          {selectedTicket.conversations && (
+            <MessageHistory msg={selectedTicket.conversations} />
+          )}
+        </Col>
+      </Row>
+      <hr className="mt-5" />
+      <Row className="mt-4">
+        <Col>
+          <UpdateTicket _id={tId} />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
