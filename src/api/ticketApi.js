@@ -62,3 +62,17 @@ export const updateTicketStatusClosed = (_id) => {
     }
   });
 };
+export const createNewTicket = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await axios.post(getSingleTicketUrl, formData, {
+        headers: {
+          Authorization: sessionStorage.getItem("accessJWT"),
+        },
+      });
+      resolve(result.data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
