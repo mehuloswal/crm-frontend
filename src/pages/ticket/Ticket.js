@@ -7,6 +7,7 @@ import { MessageHistory } from "../../components/message-history/MessageHistory.
 import { UpdateTicket } from "../../components/update-ticket/UpdateTicket.comp";
 import { useParams } from "react-router-dom";
 import { fetchSingleTicket, closeTicket } from "../ticket-list/ticketsAction";
+import { resetResponseMsg } from "../ticket-list/ticketsSlice";
 
 export const Ticket = () => {
   const { isLoading, error, selectedTicket, replyTicketError, replyMsg } =
@@ -16,7 +17,11 @@ export const Ticket = () => {
 
   useEffect(() => {
     dispatch(fetchSingleTicket(tId));
-  }, [tId, dispatch]);
+    return () => {
+      //run during component mount
+      (replyMsg || replyTicketError) && dispatch(resetResponseMsg());
+    };
+  }, [tId, dispatch, replyMsg, replyTicketError]);
 
   return (
     <Container>

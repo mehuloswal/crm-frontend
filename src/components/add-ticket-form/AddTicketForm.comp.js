@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Spinner, Alert } from "react-bootstrap";
 import "./AddTicketForm.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { openNewTicket } from "./addTicketActions";
-// import { PropTypes } from "prop-types";
+import { resetSuccessMsg } from "./addTicketSlicer";
 
 const initialFormData = {
   subject: "",
@@ -19,6 +19,11 @@ export const AddTicketForm = () => {
     (state) => state.newTicket
   );
   const [formData, setformData] = useState(initialFormData);
+  useEffect(() => {
+    return () => {
+      successMsg && dispatch(resetSuccessMsg());
+    };
+  }, [dispatch, successMsg]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
