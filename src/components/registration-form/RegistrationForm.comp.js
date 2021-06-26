@@ -230,7 +230,7 @@ export const RegistrationForm = () => {
                   passwordError.hasSpclChr ? "text-success" : "text-danger"
                 }
               >
-                At least on of the special characters i.e @ # $ % &{" "}
+                At least one of the special characters i.e @ # $ % &{" "}
               </li>
             </ul>
 
