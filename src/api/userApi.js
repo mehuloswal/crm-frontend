@@ -9,12 +9,8 @@ export const userRegistration = (formData) => {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await axios.post(userProfileUrl, formData);
-
       resolve(res.data);
-
-      if (res.data.status === "success") {
-        resolve(res.data);
-      }
+      console.log(res);
     } catch (error) {
       reject(error);
     }

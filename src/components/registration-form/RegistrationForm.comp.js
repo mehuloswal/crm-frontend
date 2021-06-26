@@ -196,7 +196,7 @@ export const RegistrationForm = () => {
               )}
             </Form.Text>
 
-            <ul className="mb-4">
+            <ul className="mb-4 mt-3">
               <li
                 className={
                   passwordError.isLenthy ? "text-success" : "text-danger"

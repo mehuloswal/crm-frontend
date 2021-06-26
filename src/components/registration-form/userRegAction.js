@@ -11,11 +11,10 @@ export const newUserRegistration = (frmDt) => async (dispatch) => {
     dispatch(registrationPending());
 
     const result = await userRegistration(frmDt);
+    console.log(result);
     result.status === "success"
       ? dispatch(registrationSuccess(result.message))
       : dispatch(registrationError(result.message));
-
-    console.log(result);
   } catch (error) {
     dispatch(registrationError(error.message));
   }
