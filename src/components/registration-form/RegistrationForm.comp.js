@@ -247,7 +247,10 @@ export const RegistrationForm = () => {
       </Row>
       <Row className="py-4">
         <Col>
-          Already have an account <a href="/">Login Now</a>
+          Already have an account?{" "}
+          <a href="/" style={{ textDecoration: "none" }}>
+            Login Now
+          </a>
         </Col>
       </Row>
     </Container>
