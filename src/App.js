@@ -4,6 +4,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry } from "./pages/entry/Entry";
+import { Registration } from "./pages/registration/Registration";
 // import { DefaultLayout } from './layout/DefaultLayout'
 import { Dashboard } from "./pages/dashboard/dashboard";
 import { AddTicket } from "./pages/new-ticket/AddTicket";
@@ -18,6 +19,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Entry />
+          </Route>
+          <Route exact path="/registration">
+            <Registration />
           </Route>
 
           <PrivateRoute path="/dashboard">
