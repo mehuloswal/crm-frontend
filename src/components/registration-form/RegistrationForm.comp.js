@@ -11,13 +11,13 @@ import {
 import { newUserRegistration } from "./userRegAction";
 import { useDispatch, useSelector } from "react-redux";
 const initialState = {
-  name: "JO",
-  phone: "0410000000",
-  email: "fakeemail@email.com",
-  company: "No Channel",
-  address: "Pune",
-  password: "sfsd#3Dsg",
-  confirmPass: "sfsd#3Dsg",
+  name: "",
+  phone: "",
+  email: "",
+  company: "",
+  address: "",
+  password: "",
+  confirmPass: "",
 };
 const passVerificationError = {
   isLenthy: false,

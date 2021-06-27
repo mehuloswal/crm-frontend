@@ -13,8 +13,8 @@ import {
 
 const initialState = {
   pin: "",
-  password: "sfsd#3Dsg",
-  confirmPass: "sfsd#3Dsg",
+  password: "",
+  confirmPass: "",
 };
 const passVerificationError = {
   isLenthy: false,

@@ -22,8 +22,8 @@ export const LoginForm = () => {
   useEffect(() => {
     sessionStorage.getItem("accessJWT") && history.push("/dashboard");
   }, [history, isAuth]);
-  const [email, setemail] = useState("mehuloswal21@gmail.com");
-  const [password, setpassword] = useState("password");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
