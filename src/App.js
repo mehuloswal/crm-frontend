@@ -10,6 +10,7 @@ import { Dashboard } from "./pages/dashboard/dashboard";
 import { AddTicket } from "./pages/new-ticket/AddTicket";
 import { TicketLists } from "./pages/ticket-list/TicketLists";
 import { Ticket } from "./pages/ticket/Ticket";
+import { PasswordReset } from "./pages/password-reset/PasswordReset";
 import { PrivateRoute } from "./components/private-route/PrivateRoute.comp";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route exact path="/registration">
             <Registration />
+          </Route>
+          <Route exact path="/password-reset">
+            <PasswordReset />
           </Route>
           <Route exact path="/verification/:_id/:email">
             <UserVerification />

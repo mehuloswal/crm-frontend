@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { userLogin } from "../../api/userApi";
 
-export const LoginForm = ({ formSwitcher }) => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLoading, isAuth, error } = useSelector((state) => state.login);
@@ -104,11 +104,7 @@ export const LoginForm = ({ formSwitcher }) => {
       </Row>
       <Row>
         <Col>
-          <a
-            href="#!"
-            onClick={() => formSwitcher("reset")}
-            className="text-decoration-none"
-          >
+          <a href="/password-reset" className="text-decoration-none">
             Forgot Password?
           </a>
         </Col>
