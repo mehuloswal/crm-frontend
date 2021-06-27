@@ -5,7 +5,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry } from "./pages/entry/Entry";
 import { Registration } from "./pages/registration/Registration";
-// import { DefaultLayout } from './layout/DefaultLayout'
+import { UserVerification } from "./pages/user-verification/UserVerification";
 import { Dashboard } from "./pages/dashboard/dashboard";
 import { AddTicket } from "./pages/new-ticket/AddTicket";
 import { TicketLists } from "./pages/ticket-list/TicketLists";
@@ -22,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/registration">
             <Registration />
+          </Route>
+          <Route exact path="/verification/:_id/:email">
+            <UserVerification />
           </Route>
 
           <PrivateRoute path="/dashboard">

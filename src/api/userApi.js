@@ -1,9 +1,10 @@
 const axios = require("axios");
 
 const loginUrl = "http://localhost:3001/v1/user/login";
-const userProfileUrl = "http://localhost:3001/v1/user";
+const userProfileUrl = "http://localhost:3001/v1/user/";
 const logoutUrl = "http://localhost:3001/v1/user/logout";
 const newAccessJWT = "http://localhost:3001/v1/tokens";
+const userVerificationUrl = userProfileUrl + "verify";
 
 export const userRegistration = (formData) => {
   return new Promise(async (resolve, reject) => {
@@ -13,6 +14,17 @@ export const userRegistration = (formData) => {
       console.log(res);
     } catch (error) {
       reject(error);
+    }
+  });
+};
+export const userRegistrationVerification = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.patch(userVerificationUrl, formData);
+      resolve(res.data);
+      console.log(res);
+    } catch (error) {
+      reject({ status: "error", message: error.message });
     }
   });
 };
